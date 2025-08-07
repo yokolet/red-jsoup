@@ -13,7 +13,7 @@ import org.jruby.api.Define;
 public class RedJSoupService implements BasicLibraryService {
 
     @Override
-    public boolean basicLoad(Ruby runtime) throws IOException {
+    public boolean basicLoad(final Ruby runtime) throws IOException {
         RubyModule rjsModule = Define.defineModule(runtime.getCurrentContext(), "RedJSoup");
         RubyClass rjsClass = rjsModule.defineClassUnder(runtime.getCurrentContext(), "Parser", runtime.getObject(), PARSER_ALLOCATOR);
         rjsClass.defineMethods(runtime.getCurrentContext(), Parser.class);
