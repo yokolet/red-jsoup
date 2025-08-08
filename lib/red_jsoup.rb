@@ -1,6 +1,6 @@
 require 'jruby'
 require_relative 'red-jsoup.jar'
 
-require 'commons-math-2.2'
+require 'jsoup-1.21.1'
 
-Java::Rjsoup::FractionService.new.basicLoad(JRuby.runtime)
+Java::Rjsoup::RedJsoupService.new.basicLoad(JRuby.runtime)
