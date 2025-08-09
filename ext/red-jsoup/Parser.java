@@ -27,20 +27,15 @@ public class Parser extends RubyObject {
         if (input instanceof RubyString) {
             String html = input.asJavaString();
             Node node = Jsoup.parse(html);
-            RubyArray nodeList = RubyArray.newArray(context);
+            RubyArray<?> nodeList = RubyArray.newArray(context);
             nodeList = findNodeList(context, node, nodeList);
             return nodeList;
         } else {
             return context.getRuntime().getNil();
         }
     }
-    
-    @JRubyMethod
-    public IRubyObject to_s(ThreadContext context) {
-        return context.getRuntime().newString("<html></html>");
-    }
 
-    private RubyArray findNodeList(ThreadContext context, Node node, RubyArray nodeList) {
+    private RubyArray<?> findNodeList(ThreadContext context, Node node, RubyArray<?> nodeList) {
         List<Node> nodes = node.childNodes();
         for (Node n : nodes) {
             nodeList = findNodeList(context, n, nodeList);
